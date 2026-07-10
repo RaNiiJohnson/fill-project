@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Star, Clock, Lock } from "lucide-react";
+import { Clock, FileText, Lock, Star } from "lucide-react";
 import { motion } from "motion/react";
 
 const features = [
@@ -30,12 +30,15 @@ export function CTA() {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Vous souhaitez savoir exactement où vous en êtes et ce qui freine votre croissance ? Demandez dès maintenant
-            une évaluation personnalisée de votre projet entrepreneurial — 100% gratuite et sans engagement.
+            Vous souhaitez savoir exactement où vous en êtes et ce qui freine
+            votre croissance? Demandez dès maintenant une évaluation
+            personnalisée de votre projet entrepreneurial — 100% gratuite et
+            sans engagement.
           </p>
 
           <p className="text-muted-foreground/80 mb-10">
-            En 20 minutes, nous identifions vos blocages prioritaires et définissons les premières actions à mettre en place immédiatement.
+            En 20 minutes, nous identifions vos blocages prioritaires et
+            définissons les premières actions à mettre en place immédiatement.
           </p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
@@ -45,13 +48,21 @@ export function CTA() {
                 initial={{ opacity: 0, scale: 0.7 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, delay: i * 0.1, type: "spring", stiffness: 100, damping: 12 }}
+                transition={{
+                  duration: 0.4,
+                  delay: i * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 12,
+                }}
                 className="flex flex-col items-center gap-3"
               >
                 <div className="rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                   <f.icon className="h-5 w-5" />
                 </div>
-                <span className="text-sm font-medium text-foreground">{f.label}</span>
+                <span className="text-sm font-medium text-foreground">
+                  {f.label}
+                </span>
               </motion.div>
             ))}
           </div>
