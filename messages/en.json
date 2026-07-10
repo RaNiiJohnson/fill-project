@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "defis": "Challenges",
+    "offres": "Offers",
+    "resultats": "Results",
+    "temoignages": "Testimonials",
+    "contact": "Contact",
+    "cta": "Free evaluation"
+  },
+  "hero": {
+    "badge": "Francophone Business Coach",
+    "title": "Ratovondrainibe Acheque Stael",
+    "description": "Entrepreneur, strategist and business coach — I help francophone startup founders create, structure and grow their business with clarity and ambition.",
+    "cta_primary": "Get my free evaluation",
+    "cta_secondary": "Discover offers"
+  }
+}

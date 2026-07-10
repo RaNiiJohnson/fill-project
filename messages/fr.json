@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "defis": "Défis",
+    "offres": "Offres",
+    "resultats": "Résultats",
+    "temoignages": "Témoignages",
+    "contact": "Contact",
+    "cta": "Évaluation gratuite"
+  },
+  "hero": {
+    "badge": "Coach Business Francophone",
+    "title": "Ratovondrainibe Acheque Stael",
+    "description": "Entrepreneur, stratège et coach business — j'accompagne les fondateurs de startups à créer, structurer et faire croître leur entreprise avec clarté et ambition.",
+    "cta_primary": "Obtenir mon évaluation gratuite",
+    "cta_secondary": "Découvrir les offres"
+  }
+}
