@@ -1,96 +1,73 @@
-"use client";
-
-import { AlertTriangle, TrendingUp, Megaphone } from "lucide-react";
-import { motion } from "motion/react";
+import { Building2, LineChart, Megaphone } from "lucide-react";
+import { ButtonLink } from "./Button-link";
+import { Reveal } from "./reveal";
 
 const challenges = [
   {
-    icon: AlertTriangle,
+    icon: Building2,
     title: "Création d'entreprise",
     description:
       "Statut juridique, business plan, financement… Les démarches sont complexes et les erreurs coûtent cher dès le départ.",
-    color: "text-orange-500",
-    bg: "bg-orange-500/10",
   },
   {
-    icon: TrendingUp,
+    icon: LineChart,
     title: "Gestion de startup",
     description:
-      "Piloter une équipe, gérer la trésorerie et maintenir la croissance sans se perdre dans l'opérationnel : un vrai défi quotidien.",
-    color: "text-blue-500",
-    bg: "bg-blue-500/10",
+      "Piloter une équipe, gérer la trésorerie et maintenir la croissance sans se perdre dans l'opérationnel.",
   },
   {
     icon: Megaphone,
     title: "Stratégie marketing",
     description:
-      "Attirer des clients qualifiés, se démarquer de la concurrence et convertir sans budget illimité reste le nerf de la guerre.",
-    color: "text-primary",
-    bg: "bg-primary/10",
+      "Attirer des clients qualifiés, se démarquer et convertir sans budget illimité reste le nerf de la guerre.",
   },
 ];
 
 export function Challenges() {
   return (
-    <section id="defis" className="py-24 bg-muted/30">
+    <section id="defis" className="bg-muted py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
+        <Reveal className="mx-auto mb-14 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
             Les défis réels des entrepreneurs{" "}
             <span className="text-primary">aujourd&apos;hui</span>
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Créer et faire grandir une entreprise n&apos;a jamais été aussi complexe. Entre les obstacles structurels,
-            les erreurs de stratégie et la gestion du quotidien, de nombreux entrepreneurs se retrouvent bloqués —
-            sans boussole ni soutien.
+          <p className="text-lg leading-relaxed text-muted-foreground">
+            Créer et faire grandir une entreprise n&apos;a jamais été aussi
+            complexe. Entre les obstacles structurels, les erreurs de stratégie
+            et la gestion du quotidien, de nombreux entrepreneurs se retrouvent
+            bloqués, sans boussole ni soutien.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3 md:gap-8">
           {challenges.map((c, i) => (
-            <motion.div
+            <Reveal
               key={c.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.15, type: "spring", stiffness: 80, damping: 14 }}
-              whileHover={{ y: -4 }}
-              className="rounded-2xl border border-border bg-card p-8 hover:shadow-lg transition-shadow duration-300"
+              delay={i * 0.08}
+              className="rounded-xl border border-border bg-card p-8 transition-colors hover:border-primary/40"
             >
-              <div className={`inline-flex rounded-xl p-3 ${c.bg} mb-6`}>
-                <c.icon className={`h-6 w-6 ${c.color}`} />
+              <div className="mb-6 inline-flex rounded-lg bg-primary/10 p-3">
+                <c.icon className="h-5 w-5 text-primary" />
               </div>
-              <h3 className="text-xl font-bold mb-3">{c.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{c.description}</p>
-            </motion.div>
+              <h3 className="mb-3 text-xl font-semibold">{c.title}</h3>
+              <p className="leading-relaxed text-muted-foreground">
+                {c.description}
+              </p>
+            </Reveal>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="mt-16 max-w-2xl mx-auto text-center rounded-2xl border border-primary/30 bg-primary/5 p-10"
-        >
-          <h3 className="text-2xl font-bold mb-4">Vous vous reconnaissez dans ces situations ?</h3>
-          <p className="text-muted-foreground mb-6">
-            Si vous avez coché au moins 2 de ces cases, vous êtes exactement là où mes accompagnements peuvent faire
-            la différence.
+        <Reveal className="mx-auto mt-14 max-w-2xl rounded-xl border border-primary/30 bg-primary/5 p-10 text-center">
+          <h3 className="mb-4 text-2xl font-semibold">
+            Vous vous reconnaissez dans ces situations&nbsp;?
+          </h3>
+          <p className="mb-6 text-muted-foreground">
+            Si vous vous reconnaissez dans au moins deux d&apos;entre elles, mes
+            accompagnements peuvent faire la différence.
           </p>
-          <a
-            href="#contact"
-            className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Parlons de votre situation
-          </a>
-        </motion.div>
+          <ButtonLink href="#contact">Parlons de votre situation</ButtonLink>
+        </Reveal>
       </div>
     </section>
   );

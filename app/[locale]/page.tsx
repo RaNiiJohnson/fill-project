@@ -1,27 +1,30 @@
-import { Navbar } from "@/components/navbar";
-import { Hero } from "@/components/hero";
 import { Challenges } from "@/components/challenges";
-import { Offers } from "@/components/offers";
-import { Stats } from "@/components/stats";
-import { Testimonials } from "@/components/testimonials";
-import { LeadMagnet } from "@/components/lead-magnet";
 import { CTA } from "@/components/cta";
-import { Steps } from "@/components/steps";
 import { Footer } from "@/components/footer";
+import { Hero } from "@/components/hero";
+import { LeadMagnet } from "@/components/lead-magnet";
+import { Navbar } from "@/components/navbar";
+import { Offers } from "@/components/offers";
+import { MotionProvider } from "@/components/reveal";
+import { Stats } from "@/components/stats";
+import { Steps } from "@/components/steps";
+import { Testimonials } from "@/components/testimonials";
 
 export default function Home() {
   return (
-    <main>
+    <MotionProvider>
       <Navbar />
-      <Hero />
-      <Challenges />
-      <Offers />
-      <Stats />
-      <Testimonials />
-      <LeadMagnet />
-      <CTA />
-      <Steps />
+      <main>
+        <Hero />
+        <Challenges />
+        <Offers />
+        <Stats />
+        <Testimonials />
+        <LeadMagnet />
+        <Steps />
+        <CTA />
+      </main>
       <Footer />
-    </main>
+    </MotionProvider>
   );
 }

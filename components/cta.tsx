@@ -1,79 +1,76 @@
-"use client";
-
+import { site } from "@/lib/site";
 import { Clock, FileText, Lock, Star } from "lucide-react";
-import { motion } from "motion/react";
+import { ButtonLink } from "./Button-link";
+import { Reveal } from "./reveal";
 
 const features = [
   { icon: FileText, label: "Diagnostic complet" },
   { icon: Star, label: "Rapport PDF offert" },
-  { icon: Clock, label: "Réponse sous 48h" },
-  { icon: Lock, label: "100% confidentiel" },
+  { icon: Clock, label: "Réponse sous 48\u00a0h" },
+  { icon: Lock, label: "100\u00a0% confidentiel" },
 ];
 
 export function CTA() {
+  const mailto = `mailto:${site.email}?subject=${encodeURIComponent("Demande d'évaluation gratuite")}`;
+  const hasBooking = Boolean(site.bookingUrl);
+
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="bg-muted py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto rounded-3xl bg-muted/30 border border-border/50 p-8 sm:p-12 text-center text-foreground shadow-sm"
-        >
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-8">
+        <Reveal className="mx-auto max-w-4xl rounded-xl border border-border bg-background p-8 text-center shadow-sm sm:p-12">
+          <div className="mb-8 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             Un rapport personnalisé offert
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground">
+          <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
             Obtenez votre évaluation gratuite
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Vous souhaitez savoir exactement où vous en êtes et ce qui freine
-            votre croissance? Demandez dès maintenant une évaluation
-            personnalisée de votre projet entrepreneurial — 100% gratuite et
-            sans engagement.
+            votre croissance&nbsp;? Demandez dès maintenant une évaluation
+            personnalisée de votre projet entrepreneurial, 100&nbsp;% gratuite
+            et sans engagement.
           </p>
 
-          <p className="text-muted-foreground/80 mb-10">
+          <p className="mb-10 text-muted-foreground">
             En 20 minutes, nous identifions vos blocages prioritaires et
             définissons les premières actions à mettre en place immédiatement.
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.label}
-                initial={{ opacity: 0, scale: 0.7 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{
-                  duration: 0.4,
-                  delay: i * 0.1,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 12,
-                }}
-                className="flex flex-col items-center gap-3"
-              >
-                <div className="rounded-xl bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
+          <ul className="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4">
+            {features.map((f) => (
+              <li key={f.label} className="flex flex-col items-center gap-3">
+                <div className="rounded-lg bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
                   <f.icon className="h-5 w-5" />
                 </div>
-                <span className="text-sm font-medium text-foreground">
-                  {f.label}
-                </span>
-              </motion.div>
+                <span className="text-sm font-medium">{f.label}</span>
+              </li>
             ))}
-          </div>
+          </ul>
 
-          <a
-            href="mailto:contact@acheque-stael.com"
-            className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-primary px-8 py-4 text-base font-bold text-primary-foreground hover:bg-primary/90 transition-all shadow-lg hover:-translate-y-0.5"
-          >
-            Demander mon évaluation gratuite
-          </a>
-        </motion.div>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <ButtonLink
+              href={hasBooking ? site.bookingUrl : mailto}
+              size="lg"
+              {...(hasBooking
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+            >
+              {hasBooking
+                ? "Réserver mon créneau"
+                : "Demander mon évaluation gratuite"}
+            </ButtonLink>
+            {hasBooking && (
+              <a
+                href={mailto}
+                className="text-sm font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                ou écrivez-moi par e-mail
+              </a>
+            )}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

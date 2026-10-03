@@ -1,7 +1,6 @@
-"use client";
-
-import { Users, User, Monitor, Check } from "lucide-react";
-import { motion } from "motion/react";
+import { Check, Monitor, User, Users } from "lucide-react";
+import { ButtonLink } from "./Button-link";
+import { Reveal } from "./reveal";
 
 const offers = [
   {
@@ -9,13 +8,14 @@ const offers = [
     title: "Ateliers Collectifs",
     subtitle: "4 mois d'accompagnement",
     description:
-      "20 entrepreneurs, 4 mois d'accompagnement intensif. Apprenez, collaborez et progressez ensemble dans un cadre structuré et bienveillant.",
+      "Un groupe de 20 entrepreneurs pour apprendre, collaborer et progresser ensemble dans un cadre structuré et bienveillant.",
     features: [
       "Sessions hebdomadaires en groupe",
       "Modules : création, gestion, marketing",
       "Communauté privée d'entraide",
       "Accès aux replays et ressources",
     ],
+    cta: "Réserver ma place",
     badge: null,
     highlighted: false,
   },
@@ -31,21 +31,23 @@ const offers = [
       "Sessions hebdomadaires dédiées",
       "Support entre les séances",
     ],
+    cta: "Demander un diagnostic",
     badge: "Populaire",
     highlighted: true,
   },
   {
     icon: Monitor,
     title: "Coaching en Ligne",
-    subtitle: "100% digital",
+    subtitle: "100 % digital",
     description:
       "Accédez à un coaching de qualité où que vous soyez. Sessions vidéo, ressources et suivi continu depuis votre espace digital dédié.",
     features: [
       "Sessions vidéo flexibles",
       "Ressources accessibles partout",
       "Suivi continu en ligne",
-      "Format 100% en ligne disponible",
+      "Format 100 % en ligne disponible",
     ],
+    cta: "Découvrir le format",
     badge: null,
     highlighted: false,
   },
@@ -53,79 +55,72 @@ const offers = [
 
 export function Offers() {
   return (
-    <section id="offres" className="py-24">
+    <section id="offres" className="bg-background py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">
-            Mes offres d&apos;<span className="text-primary">accompagnement</span>
+        <Reveal className="mx-auto mb-14 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
+            Mes offres d&apos;
+            <span className="text-primary">accompagnement</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Des solutions conçues pour répondre précisément à vos enjeux — que vous soyez au démarrage, en phase de
-            croissance ou en quête de repositionnement stratégique.
+            Des solutions conçues pour répondre précisément à vos enjeux, que
+            vous soyez au démarrage, en phase de croissance ou en quête de
+            repositionnement stratégique.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-y-12 md:gap-8 max-w-6xl mx-auto mt-8">
+        <div className="mx-auto mt-8 grid max-w-6xl gap-y-12 md:grid-cols-3 md:gap-8">
           {offers.map((offer, i) => (
-            <motion.div
+            <Reveal
               key={offer.title}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.18, type: "spring", stiffness: 70, damping: 14 }}
-              whileHover={{ y: -6 }}
-              className={`relative rounded-2xl border p-8 flex flex-col transition-shadow duration-300 hover:shadow-xl ${
+              delay={i * 0.08}
+              className={`relative flex flex-col rounded-xl border p-8 ${
                 offer.highlighted
-                  ? "border-primary bg-primary/5 shadow-lg shadow-primary/10"
+                  ? "border-primary bg-primary/5"
                   : "border-border bg-card"
               }`}
             >
               {offer.badge && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-primary px-4 py-1 text-xs font-bold text-primary-foreground">
-                    {offer.badge}
-                  </span>
-                </div>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
+                  {offer.badge}
+                </span>
               )}
 
               <div
-                className={`inline-flex rounded-xl p-3 mb-6 w-fit ${
-                  offer.highlighted ? "bg-primary/20" : "bg-muted"
+                className={`mb-6 inline-flex w-fit rounded-lg p-3 ${
+                  offer.highlighted ? "bg-primary/15" : "bg-muted"
                 }`}
               >
-                <offer.icon className={`h-6 w-6 ${offer.highlighted ? "text-primary" : "text-muted-foreground"}`} />
+                <offer.icon
+                  className={`h-5 w-5 ${offer.highlighted ? "text-primary" : "text-muted-foreground"}`}
+                />
               </div>
 
-              <h3 className="text-2xl font-bold mb-1">{offer.title}</h3>
-              <p className="text-sm font-medium text-primary mb-4">{offer.subtitle}</p>
-              <p className="text-muted-foreground leading-relaxed mb-8">{offer.description}</p>
+              <h3 className="mb-1 text-2xl font-semibold">{offer.title}</h3>
+              <p className="mb-4 text-sm font-medium text-primary">
+                {offer.subtitle}
+              </p>
+              <p className="mb-8 leading-relaxed text-muted-foreground">
+                {offer.description}
+              </p>
 
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="mb-8 flex-1 space-y-3">
                 {offer.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
 
-              <a
+              <ButtonLink
                 href="#contact"
-                className={`inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-semibold transition-colors ${
-                  offer.highlighted
-                    ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                    : "border border-border hover:bg-accent"
-                }`}
+                variant={offer.highlighted ? "primary" : "outline"}
+                className="sm:w-full"
               >
-                En savoir plus
-              </a>
-            </motion.div>
+                {offer.cta}
+              </ButtonLink>
+            </Reveal>
           ))}
         </div>
       </div>
