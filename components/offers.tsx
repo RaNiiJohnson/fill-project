@@ -1,128 +1,142 @@
-import { Check, Monitor, User, Users } from "lucide-react";
+import {
+  Check,
+  HeartHandshake,
+  MessageSquareText,
+  Radar,
+  Workflow,
+} from "lucide-react";
 import { ButtonLink } from "./Button-link";
 import { Reveal } from "./reveal";
 
 const offers = [
   {
-    icon: Users,
-    title: "Ateliers Collectifs",
-    subtitle: "4 mois d'accompagnement",
+    number: "01",
+    icon: Radar,
+    title: "Acquisition des clients",
     description:
-      "Un groupe de 20 entrepreneurs pour apprendre, collaborer et progresser ensemble dans un cadre structuré et bienveillant.",
+      "Attirez des prospects qualifiés grâce à un positionnement clair et des canaux d'acquisition ciblés.",
     features: [
-      "Sessions hebdomadaires en groupe",
-      "Modules : création, gestion, marketing",
-      "Communauté privée d'entraide",
-      "Accès aux replays et ressources",
+      "Positionnement et offre claire",
+      "Choix des canaux d'acquisition",
+      "Contenus qui attirent des leads",
+      "Tunnel de prospection",
     ],
-    cta: "Réserver ma place",
-    badge: null,
-    highlighted: false,
+    accent: "bg-[#dce5ff] text-[#244fc4] dark:bg-primary/15 dark:text-primary",
   },
   {
-    icon: User,
-    title: "Coaching One-on-One",
-    subtitle: "Suivi personnalisé",
+    number: "02",
+    icon: MessageSquareText,
+    title: "Convertir les prospects en clients",
     description:
-      "Un accompagnement personnalisé, à votre rythme, centré sur vos objectifs spécifiques. Idéal pour avancer vite et avec précision.",
+      "Transformez vos échanges en contrats signés avec un appel découverte et une offre qui convainc.",
     features: [
-      "Diagnostic initial approfondi",
-      "Plan d'action personnalisé",
-      "Sessions hebdomadaires dédiées",
-      "Support entre les séances",
+      "Appel découverte structuré",
+      "Gestion des objections",
+      "Proposition commerciale",
+      "Relance des prospects",
     ],
-    cta: "Demander un diagnostic",
-    badge: "Populaire",
-    highlighted: true,
+    accent: "bg-[#ffebc5] text-[#8c5b00] dark:bg-accent/15 dark:text-accent",
   },
   {
-    icon: Monitor,
-    title: "Coaching en Ligne",
-    subtitle: "100 % digital",
+    number: "03",
+    icon: Workflow,
+    title: "Gestion des clients",
     description:
-      "Accédez à un coaching de qualité où que vous soyez. Sessions vidéo, ressources et suivi continu depuis votre espace digital dédié.",
+      "Structurez le suivi de vos clients pour offrir un parcours fluide, organisé et professionnel.",
     features: [
-      "Sessions vidéo flexibles",
-      "Ressources accessibles partout",
-      "Suivi continu en ligne",
-      "Format 100 % en ligne disponible",
+      "Parcours client structuré",
+      "Onboarding des nouveaux clients",
+      "Outils de suivi et d'organisation",
+      "Reporting des résultats",
     ],
-    cta: "Découvrir le format",
-    badge: null,
-    highlighted: false,
+    accent: "bg-[#d9f3ea] text-[#147158] dark:bg-emerald-400/15 dark:text-emerald-300",
+  },
+  {
+    number: "04",
+    icon: HeartHandshake,
+    title: "Fidéliser",
+    description:
+      "Gardez vos clients sur la durée et générez des renouvellements et des recommandations.",
+    features: [
+      "Suivi régulier après la mission",
+      "Offres de renouvellement",
+      "Programme de recommandation",
+      "Mesure de la satisfaction",
+    ],
+    accent: "bg-[#eadffc] text-[#7040a6] dark:bg-violet-400/15 dark:text-violet-300",
   },
 ];
 
 export function Offers() {
   return (
-    <section id="offres" className="bg-background py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <Reveal className="mx-auto mb-14 max-w-3xl text-center">
-          <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
-            Mes offres d&apos;
-            <span className="text-primary">accompagnement</span>
+    <section id="offres" className="bg-background py-24 md:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
+        <Reveal className="mx-auto max-w-4xl text-center">
+          <p className="section-kicker">Mes offres d&apos;accompagnement</p>
+          <h2 className="text-4xl font-semibold leading-tight md:text-5xl">
+            De l&apos;acquisition à la fidélisation de vos clients
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Des solutions conçues pour répondre précisément à vos enjeux, que
-            vous soyez au démarrage, en phase de croissance ou en quête de
-            repositionnement stratégique.
+          <p className="mx-auto mt-7 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            Quatre accompagnements conçus pour les coachs, les formateurs et les
+            cabinets de consulting, avec un programme concret pour chaque étape
+            du parcours client.
           </p>
         </Reveal>
 
-        <div className="mx-auto mt-8 grid max-w-6xl gap-y-12 md:grid-cols-3 md:gap-8">
-          {offers.map((offer, i) => (
-            <Reveal
-              key={offer.title}
-              delay={i * 0.08}
-              className={`relative flex flex-col rounded-xl border p-8 ${
-                offer.highlighted
-                  ? "border-primary bg-primary/5"
-                  : "border-border bg-card"
-              }`}
-            >
-              {offer.badge && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
-                  {offer.badge}
-                </span>
-              )}
+        <div className="mt-16 flex items-center justify-between gap-6 border-y border-border py-5">
+          <p className="font-serif text-2xl font-semibold">Catalogue des programmes</p>
+          <span className="hidden rounded-full border border-primary/20 bg-secondary px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-primary sm:inline-flex">
+            Format 100 % en ligne disponible
+          </span>
+        </div>
 
-              <div
-                className={`mb-6 inline-flex w-fit rounded-lg p-3 ${
-                  offer.highlighted ? "bg-primary/15" : "bg-muted"
-                }`}
-              >
-                <offer.icon
-                  className={`h-5 w-5 ${offer.highlighted ? "text-primary" : "text-muted-foreground"}`}
-                />
-              </div>
+        <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          {offers.map((offer, index) => (
+            <Reveal key={offer.title} delay={index * 0.06}>
+              <article className="group relative h-full overflow-hidden rounded-[2rem] border border-border bg-card p-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary/25 hover:shadow-lg sm:p-9">
+                <div className="absolute top-0 right-0 font-serif text-[8rem] font-bold leading-none text-foreground/[0.035] transition-colors group-hover:text-primary/[0.07]">
+                  {offer.number}
+                </div>
+                <div className="relative flex h-full flex-col">
+                  <div className="flex items-start justify-between gap-6">
+                    <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${offer.accent}`}>
+                      <offer.icon className="h-6 w-6" />
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
+                      Programme {offer.number}
+                    </span>
+                  </div>
 
-              <h3 className="mb-1 text-2xl font-semibold">{offer.title}</h3>
-              <p className="mb-4 text-sm font-medium text-primary">
-                {offer.subtitle}
-              </p>
-              <p className="mb-8 leading-relaxed text-muted-foreground">
-                {offer.description}
-              </p>
+                  <h3 className="mt-8 max-w-md text-3xl font-semibold leading-tight">
+                    {offer.title}
+                  </h3>
+                  <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
+                    {offer.description}
+                  </p>
 
-              <ul className="mb-8 flex-1 space-y-3">
-                {offer.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    <span>{f}</span>
-                  </li>
-                ))}
-              </ul>
+                  <ul className="mt-8 grid gap-3 border-t border-border pt-7 sm:grid-cols-2">
+                    {offer.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3 text-sm font-medium">
+                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-secondary text-primary">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
 
-              <ButtonLink
-                href="#contact"
-                variant={offer.highlighted ? "primary" : "outline"}
-                className="sm:w-full"
-              >
-                {offer.cta}
-              </ButtonLink>
+                  <ButtonLink href="#contact" variant="outline" className="mt-9 sm:self-start">
+                    Découvrir cet accompagnement
+                  </ButtonLink>
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
+
+        <p className="mt-7 text-center text-xs font-bold uppercase tracking-[0.16em] text-muted-foreground sm:hidden">
+          Format 100 % en ligne disponible
+        </p>
       </div>
     </section>
   );

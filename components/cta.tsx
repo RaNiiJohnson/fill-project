@@ -1,13 +1,13 @@
 import { site } from "@/lib/site";
-import { Clock, FileText, Lock, Star } from "lucide-react";
+import { ArrowUpRight, Clock, FileText, LockKeyhole, ScanSearch } from "lucide-react";
 import { ButtonLink } from "./Button-link";
 import { Reveal } from "./reveal";
 
 const features = [
-  { icon: FileText, label: "Diagnostic complet" },
-  { icon: Star, label: "Rapport PDF offert" },
-  { icon: Clock, label: "Réponse sous 48\u00a0h" },
-  { icon: Lock, label: "100\u00a0% confidentiel" },
+  { icon: ScanSearch, label: "Diagnostic complet" },
+  { icon: FileText, label: "Rapport PDF offert" },
+  { icon: Clock, label: "Réponse sous 48 h" },
+  { icon: LockKeyhole, label: "100 % confidentiel" },
 ];
 
 export function CTA() {
@@ -15,60 +15,50 @@ export function CTA() {
   const hasBooking = Boolean(site.bookingUrl);
 
   return (
-    <section id="contact" className="bg-muted py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <Reveal className="mx-auto max-w-4xl rounded-xl border border-border bg-background p-8 text-center shadow-sm sm:p-12">
-          <div className="mb-8 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            Un rapport personnalisé offert
-          </div>
+    <section id="contact" className="bg-background py-24 md:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
+        <Reveal className="overflow-hidden rounded-[2.25rem] bg-primary text-primary-foreground shadow-xl">
+          <div className="grid lg:grid-cols-[1.12fr_0.88fr]">
+            <div className="relative p-8 sm:p-12 lg:p-16">
+              <div aria-hidden className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full border-[48px] border-white/5" />
+              <div className="relative">
+                <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-white/65">
+                  Un rapport personnalisé offert
+                </p>
+                <h2 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
+                  Obtenez votre évaluation gratuite
+                </h2>
+                <p className="mt-7 max-w-2xl text-lg leading-relaxed text-white/80">
+                  Vous êtes coach, formateur ou cabinet de consulting et souhaitez
+                  savoir où vous en êtes&nbsp;? Demandez une évaluation
+                  personnalisée de votre activité, 100&nbsp;% gratuite et sans
+                  engagement.
+                </p>
+                <p className="mt-5 max-w-2xl leading-relaxed text-white/65">
+                  En 20 minutes, nous identifions vos blocages en acquisition,
+                  conversion, gestion et fidélisation de vos clients.
+                </p>
 
-          <h2 className="mb-6 text-3xl font-semibold md:text-4xl">
-            Obtenez votre évaluation gratuite
-          </h2>
+                <ButtonLink
+                  href={hasBooking ? site.bookingUrl : mailto}
+                  size="lg"
+                  className="mt-9 !bg-white !text-primary hover:!bg-white/90"
+                  {...(hasBooking ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {hasBooking ? "Réserver mon créneau" : "Demander mon évaluation gratuite"}
+                  <ArrowUpRight className="h-4 w-4" />
+                </ButtonLink>
+              </div>
+            </div>
 
-          <p className="mx-auto mb-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Vous souhaitez savoir exactement où vous en êtes et ce qui freine
-            votre croissance&nbsp;? Demandez dès maintenant une évaluation
-            personnalisée de votre projet entrepreneurial, 100&nbsp;% gratuite
-            et sans engagement.
-          </p>
-
-          <p className="mb-10 text-muted-foreground">
-            En 20 minutes, nous identifions vos blocages prioritaires et
-            définissons les premières actions à mettre en place immédiatement.
-          </p>
-
-          <ul className="mb-10 grid grid-cols-2 gap-6 md:grid-cols-4">
-            {features.map((f) => (
-              <li key={f.label} className="flex flex-col items-center gap-3">
-                <div className="rounded-lg bg-primary/10 p-3 text-primary ring-1 ring-primary/20">
-                  <f.icon className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">{f.label}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <ButtonLink
-              href={hasBooking ? site.bookingUrl : mailto}
-              size="lg"
-              {...(hasBooking
-                ? { target: "_blank", rel: "noopener noreferrer" }
-                : {})}
-            >
-              {hasBooking
-                ? "Réserver mon créneau"
-                : "Demander mon évaluation gratuite"}
-            </ButtonLink>
-            {hasBooking && (
-              <a
-                href={mailto}
-                className="text-sm font-medium text-muted-foreground underline underline-offset-4 transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-              >
-                ou écrivez-moi par e-mail
-              </a>
-            )}
+            <ul className="grid border-t border-white/15 sm:grid-cols-2 lg:border-t-0 lg:border-l">
+              {features.map((feature) => (
+                <li key={feature.label} className="flex min-h-44 flex-col justify-between border-b border-white/15 p-7 last:border-b-0 sm:border-r sm:p-8 sm:[&:nth-child(even)]:border-r-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
+                  <feature.icon className="h-7 w-7 text-white/70" />
+                  <span className="mt-8 font-serif text-xl font-semibold">{feature.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
       </div>

@@ -6,11 +6,13 @@ type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
 };
 
 const base =
-  "inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-md font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
+  "inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary";
 
 const variants = {
-  primary: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90",
-  outline: "border border-border bg-background hover:bg-accent",
+  primary:
+    "bg-primary text-primary-foreground shadow-sm hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-md",
+  outline:
+    "border border-border bg-background/70 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-secondary",
 };
 
 const sizes = {

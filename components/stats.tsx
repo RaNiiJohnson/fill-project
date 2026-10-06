@@ -1,6 +1,4 @@
-"use client";
-
-import { motion } from "motion/react";
+import { Reveal } from "./reveal";
 
 const stats = [
   {
@@ -27,47 +25,39 @@ const stats = [
 
 export function Stats() {
   return (
-    <section
-      id="resultats"
-      className="py-24 bg-primary text-primary-foreground"
-    >
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Des résultats qui parlent d&apos;eux-mêmes
-          </h2>
-        </motion.div>
+    <section id="resultats" className="relative overflow-hidden bg-[#101b36] py-24 text-white md:py-32">
+      <div aria-hidden className="absolute -top-36 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/35 blur-3xl" />
+      <div className="container relative mx-auto px-4 sm:px-6">
+        <Reveal className="grid gap-8 border-b border-white/10 pb-12 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#8da7ff]">
+              Résultats
+            </p>
+            <h2 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl">
+              Des résultats qui parlent d&apos;eux-mêmes
+            </h2>
+          </div>
+          <p className="max-w-sm leading-relaxed text-white/60">
+            Des indicateurs concrets pour mesurer l&apos;impact de
+            l&apos;accompagnement sur l&apos;activité.
+          </p>
+        </Reveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-          {stats.map((s, i) => (
-            <motion.div
-              key={s.label}
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.12,
-                type: "spring",
-                stiffness: 90,
-                damping: 14,
-              }}
-              className="text-center"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <Reveal
+              key={stat.label}
+              delay={index * 0.08}
+              className={`${index < 3 ? "border-b" : "border-b-0"} border-white/10 ${index % 2 === 0 ? "sm:border-r" : "sm:border-r-0"} ${index < 2 ? "sm:border-b" : "sm:border-b-0"} ${index < 3 ? "lg:border-r" : "lg:border-r-0"} lg:border-b-0`}
             >
-              <div className="text-5xl md:text-6xl font-extrabold mb-2 text-white">
-                {s.value}
+              <div className="min-h-72 py-10 sm:min-h-80 sm:px-7 lg:px-8">
+                <div className="font-serif text-6xl font-semibold tracking-tight text-[#8da7ff] md:text-7xl">
+                  {stat.value}
+                </div>
+                <h3 className="mt-8 text-xl font-semibold">{stat.label}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/55">{stat.sub}</p>
               </div>
-              <div className="text-lg font-semibold mb-1 text-white/90">
-                {s.label}
-              </div>
-              <div className="text-sm text-white/60">{s.sub}</div>
-            </motion.div>
+            </Reveal>
           ))}
         </div>
       </div>

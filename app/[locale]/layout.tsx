@@ -3,23 +3,16 @@ import { routing } from "@/i18n/routing";
 import type { Metadata } from "next";
 import { Locale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import { Inter, Source_Serif_4 } from "next/font/google";
 import "../globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  variable: "--font-source-serif",
-});
-
 export const metadata: Metadata = {
-  title: "Acheque Stael — Coach Business Francophone",
+  title: "Acheque Stael — Coach business pour coachs et consultants",
   description:
-    "Entrepreneur, stratège et coach business — j'accompagne les fondateurs de startups et entrepreneurs francophones à créer, structurer et faire croître leur entreprise.",
+    "Acheque Stael accompagne les coachs, formateurs et cabinets de consulting à acquérir, convertir, gérer et fidéliser leurs clients.",
   openGraph: {
-    title: "Acheque Stael — Coach Business Francophone",
+    title: "Acheque Stael — Coach business pour coachs et consultants",
     description:
-      "J'accompagne les fondateurs de startups et entrepreneurs francophones à créer, structurer et faire croître leur entreprise.",
+      "Des accompagnements concrets pour structurer votre acquisition, votre conversion et votre parcours client.",
     type: "website",
   },
 };
@@ -42,7 +35,6 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${sourceSerif.variable}`}
       suppressHydrationWarning
     >
       <body>

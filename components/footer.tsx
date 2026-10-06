@@ -6,11 +6,12 @@ const link =
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background py-12">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col items-center gap-6 text-center md:flex-row md:justify-between md:text-left">
           <div>
-            <div className="mb-1 font-serif text-lg font-semibold">
-              <span className="text-primary">Acheque</span> Stael
+            <div className="mb-1 flex items-center justify-center gap-3 font-serif text-lg font-semibold md:justify-start">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">AS</span>
+              <span>Acheque <span className="text-primary">Stael</span></span>
             </div>
             <p className="text-sm text-muted-foreground">
               Coach business · Entrepreneur · Stratège

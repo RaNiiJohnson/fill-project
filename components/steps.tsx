@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "./Button-link";
 import { Reveal } from "./reveal";
 
@@ -5,70 +6,54 @@ const steps = [
   {
     number: "01",
     title: "Téléchargez le guide gratuit",
-    description:
-      "Commencez par identifier vos blocages prioritaires avec notre ressource offerte.",
+    description: "Commencez par identifier vos blocages prioritaires avec notre ressource offerte.",
   },
   {
     number: "02",
     title: "Demandez votre évaluation",
-    description:
-      "Recevez un diagnostic personnalisé de votre situation entrepreneuriale.",
+    description: "Recevez un diagnostic personnalisé de votre activité de coaching, de formation ou de consulting.",
   },
   {
     number: "03",
-    title: "Choisissez votre formule",
-    description:
-      "Atelier collectif ou coaching individuel : sélectionnez l'accompagnement qui vous correspond.",
+    title: "Choisissez votre offre",
+    description: "Acquisition, conversion, gestion ou fidélisation : sélectionnez l'accompagnement qui vous correspond.",
   },
   {
     number: "04",
     title: "Atteignez vos objectifs",
-    description:
-      "Avancez avec une méthode éprouvée et un coach engagé à vos côtés à chaque étape.",
+    description: "Avancez avec une méthode éprouvée et un coach engagé à vos côtés à chaque étape.",
   },
 ];
 
 export function Steps() {
   return (
-    <section className="bg-background py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <Reveal className="mb-14 text-center">
-          <h2 className="mb-4 text-3xl font-semibold md:text-4xl">
-            Comment ça <span className="text-primary">marche</span>
-          </h2>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-            Quatre étapes simples pour bâtir votre succès avec méthode, clarté
-            et un coach à vos côtés.
-          </p>
+    <section className="bg-[#101b36] py-24 text-white md:py-32">
+      <div className="container mx-auto px-4 sm:px-6">
+        <Reveal className="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.2em] text-[#8da7ff]">La prochaine étape</p>
+            <h2 className="max-w-3xl text-4xl font-semibold leading-tight md:text-5xl">Prêt à passer à l&apos;action&nbsp;?</h2>
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/60">
+              Rejoignez les coachs, formateurs et cabinets de consulting qui développent leur activité avec méthode, clarté et un coach à leurs côtés.
+            </p>
+          </div>
+          <ButtonLink href="#contact" className="!bg-white !text-[#101b36] hover:!bg-white/90">
+            Commencer maintenant
+            <ArrowRight className="h-4 w-4" />
+          </ButtonLink>
         </Reveal>
 
-        <ol className="mx-auto grid max-w-5xl gap-10 md:grid-cols-4 md:gap-8">
-          {steps.map((step, i) => (
-            <li key={step.number} className="relative text-center">
-              {i < steps.length - 1 && (
-                <div
-                  aria-hidden
-                  className="absolute left-1/2 top-8 hidden h-px w-full bg-border md:block"
-                />
-              )}
-              <Reveal delay={i * 0.08}>
-                <div className="relative z-10 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-primary font-serif text-xl font-semibold text-primary-foreground">
-                  {step.number}
-                </div>
-                <h3 className="mb-3 text-lg font-semibold">{step.title}</h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {step.description}
-                </p>
+        <ol className="mt-16 grid border-t border-white/15 md:grid-cols-2 xl:grid-cols-4">
+          {steps.map((step, index) => (
+            <li key={step.number} className="border-b border-white/15 py-9 md:border-r md:px-8 md:[&:nth-child(even)]:border-r-0 xl:border-b-0 xl:[&:nth-child(even)]:border-r xl:last:border-r-0">
+              <Reveal delay={index * 0.08}>
+                <span className="font-serif text-5xl font-semibold text-[#8da7ff]">{step.number}</span>
+                <h3 className="mt-8 text-2xl font-semibold">{step.title}</h3>
+                <p className="mt-4 text-sm leading-relaxed text-white/55">{step.description}</p>
               </Reveal>
             </li>
           ))}
         </ol>
-
-        <Reveal delay={0.2} className="mt-14 text-center">
-          <ButtonLink href="#contact" size="lg">
-            Commencer maintenant
-          </ButtonLink>
-        </Reveal>
       </div>
     </section>
   );

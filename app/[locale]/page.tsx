@@ -20,9 +20,9 @@ export default function Home() {
         <Offers />
         <Stats />
         <Testimonials />
+        <CTA />
         <LeadMagnet />
         <Steps />
-        <CTA />
       </main>
       <Footer />
     </MotionProvider>
