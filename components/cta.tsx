@@ -1,6 +1,5 @@
-import { site } from "@/lib/site";
-import { ArrowUpRight, Clock, FileText, LockKeyhole, ScanSearch } from "lucide-react";
-import { ButtonLink } from "./Button-link";
+import { Clock, FileText, LockKeyhole, ScanSearch } from "lucide-react";
+import { ContactForm } from "./contact-form";
 import { Reveal } from "./reveal";
 
 const features = [
@@ -11,14 +10,11 @@ const features = [
 ];
 
 export function CTA() {
-  const mailto = `mailto:${site.email}?subject=${encodeURIComponent("Demande d'évaluation gratuite")}`;
-  const hasBooking = Boolean(site.bookingUrl);
-
   return (
     <section id="contact" className="bg-background py-24 md:py-32">
       <div className="container mx-auto px-4 sm:px-6">
         <Reveal className="overflow-hidden rounded-[2.25rem] bg-primary text-primary-foreground shadow-xl">
-          <div className="grid lg:grid-cols-[1.12fr_0.88fr]">
+          <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
             <div className="relative p-8 sm:p-12 lg:p-16">
               <div aria-hidden className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full border-[48px] border-white/5" />
               <div className="relative">
@@ -39,26 +35,24 @@ export function CTA() {
                   conversion, gestion et fidélisation de vos clients.
                 </p>
 
-                <ButtonLink
-                  href={hasBooking ? site.bookingUrl : mailto}
-                  size="lg"
-                  className="mt-9 !bg-white !text-primary hover:!bg-white/90"
-                  {...(hasBooking ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                >
-                  {hasBooking ? "Réserver mon créneau" : "Demander mon évaluation gratuite"}
-                  <ArrowUpRight className="h-4 w-4" />
-                </ButtonLink>
+                <ul className="mt-10 grid gap-x-6 gap-y-5 sm:grid-cols-2">
+                  {features.map((feature) => (
+                    <li key={feature.label} className="flex items-center gap-3">
+                      <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white/80">
+                        <feature.icon className="size-5" />
+                      </span>
+                      <span className="text-sm font-semibold text-white/90">
+                        {feature.label}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            <ul className="grid border-t border-white/15 sm:grid-cols-2 lg:border-t-0 lg:border-l">
-              {features.map((feature) => (
-                <li key={feature.label} className="flex min-h-44 flex-col justify-between border-b border-white/15 p-7 last:border-b-0 sm:border-r sm:p-8 sm:[&:nth-child(even)]:border-r-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
-                  <feature.icon className="h-7 w-7 text-white/70" />
-                  <span className="mt-8 font-serif text-xl font-semibold">{feature.label}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="border-t border-white/15 p-4 sm:p-6 lg:border-t-0 lg:border-l lg:p-8">
+              <ContactForm />
+            </div>
           </div>
         </Reveal>
       </div>

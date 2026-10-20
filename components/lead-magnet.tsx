@@ -1,6 +1,5 @@
-import { site } from "@/lib/site";
-import { ArrowRight, BookOpen, ClipboardCheck, Download, MapPinned, Zap } from "lucide-react";
-import { ButtonLink } from "./Button-link";
+import { BookOpen, ClipboardCheck, MapPinned, Zap } from "lucide-react";
+import { GuideDownloadDialog } from "./guide-download-dialog";
 import { Reveal } from "./reveal";
 
 const benefits = [
@@ -69,11 +68,9 @@ export function LeadMagnet() {
                 ))}
               </ul>
 
-              <ButtonLink href={site.guideUrl} download size="lg" className="mt-10">
-                <Download className="h-4 w-4" />
-                Télécharger gratuitement
-                <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
+              <div className="mt-10">
+                <GuideDownloadDialog />
+              </div>
             </div>
           </div>
         </Reveal>
