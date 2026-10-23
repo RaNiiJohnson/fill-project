@@ -19,8 +19,7 @@ export function Hero() {
             <p className="section-kicker">Coach business francophone</p>
 
             <h1 className="mb-7 max-w-3xl text-5xl font-semibold leading-[1.03] sm:text-6xl lg:text-7xl">
-              Coachs, formateurs, consultants : donnez de la clarté et de
-              l&apos;ambition{" "}
+              Coachs, formateurs, consultants :
               <span className="relative inline-block text-primary">
                 la clarté et de l&apos;ambition
                 <span
